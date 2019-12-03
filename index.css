@@ -1,6 +1,6 @@
 [type="radio"]:checked + label {
     color: rgb(114, 114, 145);
-    background: wheat
+    background: rgba(245, 222, 179, 0.438)
   }
 
   .loader {

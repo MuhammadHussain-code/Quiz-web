@@ -14,11 +14,16 @@ let next = _ => {
             startTimer(twoMinutes, display);
             console.log(display)
         })();
-        
+
     }
     else if (document.querySelector('#timer').textContent == '00:00') {
+
         Swal.fire('Your time is  up!');
-        finish()
+
+        finish();
+
+        return false 
+
 
     }
 
@@ -54,7 +59,7 @@ let next = _ => {
                 
                 <ul class="answers text-info h4 p-3 font-weight-bold" >
         
-        <input type="radio" name="q1" value="${wrong[random[3]]}" id="q1a"><label for="q1a" class="p-2 " >${wrong[random[3]]}</label><br />
+        <input type="radio" checked name="q1" value="${wrong[random[3]]}" id="q1a"><label for="q1a" class="p-2 " >${wrong[random[3]]}</label><br />
         
         <input type="radio" name="q1" value="${wrong[random[2]]}" id="q1b"><label for="q1b" class="p-2">${wrong[random[2]]}</label><br />
         
@@ -114,9 +119,7 @@ let next = _ => {
 let finish = _ => {
     let perc = (score * 100) / (total * 5);
     perc = Math.round(perc)
-    if ($('input[name="q1"]:checked').length == 0) {
-        return false;
-    }
+    
     if (perc >= 50) {
         document.getElementById('main').innerHTML = ` <div class="align-items-center">
         <p class="question h3 text-white bg-success p-3 font-weight-bold  text-center"><span>Passed</span></br>Your score is ${score} out of ${total * 5}
@@ -130,6 +133,7 @@ let finish = _ => {
 
     }
     document.getElementById('end').innerHTML = ''
+    return
 }
 
 let check = _ => {
